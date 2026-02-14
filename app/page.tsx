@@ -15,6 +15,17 @@ export default function Home() {
   const [activeTab, setActiveTab] = useState('itinerary');
   const [selectedCategory, setSelectedCategory] = useState('all');
 
+  // Transform itineraryData to locations format for MapView
+  const mapLocations = itineraryData.flatMap((day, dayIndex) => 
+    day.activities.map((activity, actIndex) => ({
+      lat: day.coordinates[0],
+      lng: day.coordinates[1],
+      name: activity.name,
+      type: `day-${dayIndex}`,
+      description: activity.description
+    }))
+  );
+
   return (
     <main className="min-h-screen bg-gray-950 text-gray-100">
       {/* Hero Section */}
@@ -61,9 +72,8 @@ export default function Home() {
                 <h2 className="text-2xl sm:text-3xl font-bold text-primary">🗺️ Mappa dell'Isola</h2>
               </div>
               <MapView 
-                itineraryData={itineraryData}
+                locations={mapLocations}
                 selectedDay={selectedDay}
-                onDaySelect={setSelectedDay}
               />
             </div>
 
