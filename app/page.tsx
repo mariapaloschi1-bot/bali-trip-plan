@@ -283,8 +283,7 @@ function DayCard({ day, dayNumber, isSelected, onClick }: any) {
       {day.accommodation && (
         <div className="mt-4 p-3 sm:p-4 bg-secondary/10 rounded-xl border border-secondary/30">
           <h4 className="font-semibold text-secondary mb-2 text-sm sm:text-base">🏨 Alloggio</h4>
-          <p className="text-sm sm:text-base text-gray-300">{day.accommodation.description}</p>
-          <p className="text-xs sm:text-sm text-gray-400 mt-1">{day.accommodation.price}</p>
+          <p className="text-sm sm:text-base text-gray-300">{day.accommodation}</p>
         </div>
       )}
 
